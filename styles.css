@@ -1,0 +1,92 @@
+/* Reset */
+* {
+	margin: 0;
+	padding: 0;
+	box-sizing: border-box;
+  }
+  
+  body {
+	font-family: Georgia, serif;
+	background: #222;
+	color: #fff;
+	font-size: 14px;
+	line-height: 1.5;
+  }
+  
+  /* Links */
+  a {
+	color: #ffcc00;
+	text-decoration: none;
+  }
+  a:hover,
+  a.active {
+	color: #fff;
+	font-weight: bold;
+  }
+  
+  /* Timeline container */
+  #timeline {
+	width: 800px;
+	margin: 40px auto;
+	display: flex;
+	gap: 20px;
+  }
+  
+  /* Dates list */
+  #dates {
+	flex: 1;
+	list-style: none;
+  }
+  #dates li {
+	margin: 10px 0;
+	font-size: 22px;
+  }
+  
+  /* Issues list */
+  #issues {
+	flex: 2;
+	list-style: none;
+  }
+  #issues li {
+	display: none; /* hidden by default */
+	text-align: center;
+  }
+  #issues li.active {
+	display: block; /* only show selected */
+  }
+  #issues img {
+	width: 150px;
+	margin-bottom: 10px;
+  }
+  #issues h1 {
+	font-size: 24px;
+	margin-bottom: 10px;
+  }
+  h2 {
+	font-size: 28px;
+	margin-bottom: 10px;
+	text-align: center;
+  }
+  #issues p {
+	font-size: 22px;
+	color: #ddd;
+	text-align: justify;
+  }
+  
+
+  a.quellen:hover {
+	color: #ffcc00;
+	font-weight: bold;
+	text-decoration: underline;
+	text-align: center;
+  }
+  
+  a.quellen {
+	color: #fff;
+	background: #444;
+	padding: 2px 6px;
+	border-radius: 4px;
+	font-size: 24px;
+	text-align: center;
+  }
+  
