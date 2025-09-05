@@ -48,7 +48,7 @@
 	list-style: none;
   }
   #issues li {
-	display: none; /* hidden by default */
+	display: block; /* hidden by default */
 	text-align: center;
   }
   #issues li.active {
