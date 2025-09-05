@@ -3,25 +3,28 @@
     <head>
         <link rel="stylesheet" href="styles.css">
         <script>
-            document.addEventListener("DOMContentLoaded", () => {
-              const dates = document.querySelectorAll("#dates a");
-              const issues = document.querySelectorAll("#issues li");
-            
-              dates.forEach(link => {
-                link.addEventListener("click", e => {
-                  e.preventDefault();
-                  const targetId = link.getAttribute("href").substring(1);
-            
-                  // remove active from all
-                  dates.forEach(d => d.classList.remove("active"));
-                  issues.forEach(i => i.classList.remove("active"));
-            
-                  // add active to clicked link + matching issue
-                  link.classList.add("active");
-                  document.getElementById(targetId).classList.add("active");
-                });
-              });
-            });
+document.addEventListener("DOMContentLoaded", () => {
+  const dates = document.querySelectorAll("#dates a");
+  const issues = document.querySelectorAll("#issues li");
+
+  dates.forEach(link => {
+    link.addEventListener("click", e => {
+      e.preventDefault();
+      const targetId = link.getAttribute("href").substring(1);
+
+      // remove active from all
+      dates.forEach(d => d.classList.remove("active"));
+      issues.forEach(i => i.classList.remove("active"));
+
+      // add active only if the element exists
+      const targetIssue = document.getElementById(targetId);
+      if (targetIssue) {
+        link.classList.add("active");
+        targetIssue.classList.add("active");
+      }
+    });
+  });
+});
             </script>
              
       </head>
