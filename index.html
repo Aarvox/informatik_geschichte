@@ -2,30 +2,7 @@
 <html>
     <head>
         <link rel="stylesheet" href="styles.css">
-        <script>
-document.addEventListener("DOMContentLoaded", () => {
-  const dates = document.querySelectorAll("#dates a");
-  const issues = document.querySelectorAll("#issues li");
 
-  dates.forEach(link => {
-    link.addEventListener("click", e => {
-      e.preventDefault();
-      const targetId = link.getAttribute("href").substring(1);
-
-      // remove active from all
-      dates.forEach(d => d.classList.remove("active"));
-      issues.forEach(i => i.classList.remove("active"));
-
-      // add active only if the element exists
-      const targetIssue = document.getElementById(targetId);
-      if (targetIssue) {
-        link.classList.add("active");
-        targetIssue.classList.add("active");
-      }
-    });
-  });
-});
-            </script>
              
       </head>
       <body>
@@ -99,5 +76,36 @@ document.addEventListener("DOMContentLoaded", () => {
 <div>
     <p><a href="quellen.html" class="quellen">Quellen</a></p>
 </div>
+
+          <script>
+document.addEventListener("DOMContentLoaded", () => {
+  const dates = document.querySelectorAll("#dates a");
+  const issues = document.querySelectorAll("#issues li");
+
+  // erstes Element aktiv setzen, nur wenn existiert
+  if (issues[0] && dates[0]) {
+    issues[0].classList.add("active");
+    dates[0].classList.add("active");
+  }
+
+  dates.forEach(link => {
+    link.addEventListener("click", e => {
+      e.preventDefault();
+      const targetId = link.getAttribute("href").substring(1);
+      const targetIssue = document.getElementById(targetId);
+
+      if (!targetIssue) return; // nur weitermachen, wenn Element existiert
+
+      // alle vorherigen entfernen
+      dates.forEach(d => d.classList.remove("active"));
+      issues.forEach(i => i.classList.remove("active"));
+
+      // geklickten Link + Ziel sichtbar machen
+      link.classList.add("active");
+      targetIssue.classList.add("active");
+    });
+  });
+});
+</script>
 </body>
 </html>
