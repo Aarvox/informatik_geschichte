@@ -77,34 +77,37 @@
     <p><a href="quellen.html" class="quellen">Quellen</a></p>
 </div>
 
-          <script>
+<script>
 document.addEventListener("DOMContentLoaded", () => {
-  const dates = document.querySelectorAll("#dates a");
-  const issues = document.querySelectorAll("#issues li");
+  // kleines Delay einfügen, damit Preview-DOM stabil ist
+  setTimeout(() => {
+    const dates = document.querySelectorAll("#dates a");
+    const issues = document.querySelectorAll("#issues li");
 
-  // erstes Element aktiv setzen, nur wenn existiert
-  if (issues[0] && dates[0]) {
-    issues[0].classList.add("active");
-    dates[0].classList.add("active");
-  }
+    // erstes Element aktiv setzen
+    if (issues[0] && dates[0]) {
+      issues[0].classList.add("active");
+      dates[0].classList.add("active");
+    }
 
-  dates.forEach(link => {
-    link.addEventListener("click", e => {
-      e.preventDefault();
-      const targetId = link.getAttribute("href").substring(1);
-      const targetIssue = document.getElementById(targetId);
+    dates.forEach(link => {
+      link.addEventListener("click", e => {
+        e.preventDefault();
+        const targetId = link.getAttribute("href").substring(1);
+        const targetIssue = document.getElementById(targetId);
 
-      if (!targetIssue) return; // nur weitermachen, wenn Element existiert
+        if (!targetIssue) return; // nur weitermachen, wenn Ziel existiert
 
-      // alle vorherigen entfernen
-      dates.forEach(d => d.classList.remove("active"));
-      issues.forEach(i => i.classList.remove("active"));
+        // vorherige active entfernen
+        dates.forEach(d => d.classList.remove("active"));
+        issues.forEach(i => i.classList.remove("active"));
 
-      // geklickten Link + Ziel sichtbar machen
-      link.classList.add("active");
-      targetIssue.classList.add("active");
+        // geklickten Link + Ziel sichtbar machen
+        link.classList.add("active");
+        targetIssue.classList.add("active");
+      });
     });
-  });
+  }, 50); // 50ms Delay reicht meist
 });
 </script>
 </body>
