@@ -2,7 +2,27 @@
 <html>
     <head>
         <link rel="stylesheet" href="styles.css">
-
+        <script>
+            document.addEventListener("DOMContentLoaded", () => {
+              const dates = document.querySelectorAll("#dates a");
+              const issues = document.querySelectorAll("#issues li");
+            
+              dates.forEach(link => {
+                link.addEventListener("click", e => {
+                  e.preventDefault();
+                  const targetId = link.getAttribute("href").substring(1);
+            
+                  // remove active from all
+                  dates.forEach(d => d.classList.remove("active"));
+                  issues.forEach(i => i.classList.remove("active"));
+            
+                  // add active to clicked link + matching issue
+                  link.classList.add("active");
+                  document.getElementById(targetId).classList.add("active");
+                });
+              });
+            });
+            </script>
              
       </head>
       <body>
@@ -19,20 +39,28 @@
         <li><a href="#1999">1999</a></li>
         <li><a href="#2001">2001</a></li>
         <li><a href="#2011">2011</a></li>
+        <li><a href="#1944">1944</a></li>
+        <li><a href="#1950">1950</a></li>
+        <li><a href="#1971">1971</a></li>
+        <li><a href="#1977">1977</a></li>
+        <li><a href="#1989">1989</a></li>
+        <li><a href="#1999">1999</a></li>
+        <li><a href="#2001">2001</a></li>
+        <li><a href="#2011">2011</a></li>
     </ul>
     <ul id="issues">
-        <li id="1705 - Binärsystem" class="active">
+        <li id="1900" class="active">
             <img src="ada.png" />
             <h1>Ada Lovelace</h1>
             <p>Donec semper quam scelerisque tortor dictum gravida. In hac habitasse platea dictumst. Nam pulvinar, odio sed rhoncus suscipit, sem diam ultrices mauris, eu consequat purus metus eu velit. Proin metus odio, aliquam eget molestie nec, gravida ut sapien. Phasellus quis est sed turpis sollicitudin venenatis sed eu odio. Praesent eget neque eu eros interdum malesuada non vel leo. Sed fringilla porta ligula.</p>
         </li>
         <li id="1930">
-            <img src="ada.png" />
+            <img src="https://upload.wikimedia.org/wikipedia/commons/thumb/4/4c/Ada_Lovelace_daguerreotype_by_Antoine_Claudet_1843_-_cropped.png/500px-Ada_Lovelace_daguerreotype_by_Antoine_Claudet_1843_-_cropped.png" />
             <h1>1930</h1>
             <p>Donec semper quam scelerisque tortor dictum gravida. In hac habitasse platea dictumst. Nam pulvinar, odio sed rhoncus suscipit, sem diam ultrices mauris, eu consequat purus metus eu velit. Proin metus odio, aliquam eget molestie nec, gravida ut sapien. Phasellus quis est sed turpis sollicitudin venenatis sed eu odio. Praesent eget neque eu eros interdum malesuada non vel leo. Sed fringilla porta ligula.</p>
         </li>
         <li id="1944">
-            <img src="ada.png" />
+            <img src="https://upload.wikimedia.org/wikipedia/commons/d/da/Konrad_Zuse_%281992%29.jpg" />
             <h1>1944</h1>
             <p>Donec semper quam scelerisque tortor dictum gravida. In hac habitasse platea dictumst. Nam pulvinar, odio sed rhoncus suscipit, sem diam ultrices mauris, eu consequat purus metus eu velit. Proin metus odio, aliquam eget molestie nec, gravida ut sapien. Phasellus quis est sed turpis sollicitudin venenatis sed eu odio. Praesent eget neque eu eros interdum malesuada non vel leo. Sed fringilla porta ligula.</p>
         </li>
@@ -76,39 +104,5 @@
 <div>
     <p><a href="quellen.html" class="quellen">Quellen</a></p>
 </div>
-
-<script>
-document.addEventListener("DOMContentLoaded", () => {
-  // kleines Delay einfügen, damit Preview-DOM stabil ist
-  setTimeout(() => {
-    const dates = document.querySelectorAll("#dates a");
-    const issues = document.querySelectorAll("#issues li");
-
-    // erstes Element aktiv setzen
-    if (issues[0] && dates[0]) {
-      issues[0].classList.add("active");
-      dates[0].classList.add("active");
-    }
-
-    dates.forEach(link => {
-      link.addEventListener("click", e => {
-        e.preventDefault();
-        const targetId = link.getAttribute("href").substring(1);
-        const targetIssue = document.getElementById(targetId);
-
-        if (!targetIssue) return; // nur weitermachen, wenn Ziel existiert
-
-        // vorherige active entfernen
-        dates.forEach(d => d.classList.remove("active"));
-        issues.forEach(i => i.classList.remove("active"));
-
-        // geklickten Link + Ziel sichtbar machen
-        link.classList.add("active");
-        targetIssue.classList.add("active");
-      });
-    });
-  }, 50); // 50ms Delay reicht meist
-});
-</script>
 </body>
 </html>
